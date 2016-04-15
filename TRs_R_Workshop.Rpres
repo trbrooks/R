@@ -1,0 +1,747 @@
+Beginning R.
+========================================================
+author: T.R. Brooks (PAC-E)
+IGERT J-Term 2016
+
+---
+
+
+Let's download R!
+=====================
+incremental: true
+>- for windows, go to https://cran.r-project.org/bin/windows/base/
+>- for mac, go to https://cran.r-project.org/bin/macosx/
+>- Follow the installation instructions.
+
+Now let's download RStudio
+======================
+incremental: true
+>- R studio is an application that makes using R easier.
+>- Go to https://www.rstudio.com/products/rstudio/download/
+>- Choose the appropriate installer for your OS.
+>- Follow the installations instructions.
+
+Now let's create a new R project!
+=================================
+incremental: true
+>- File > New Project > New Directory > New R Project
+>- Tip: don't use spaces or special characters in the name.
+>- Choose where to put it. (Such as your desktop.)
+>- Open your new R project.
+>- File > New File > R script.
+
+What's with all these windows?
+=============================
+incremental: true
+>- Upper left: Your source window. It's like a notebook for your code.
+>- Lower left: Your console. This where you enter code to make R execute your commands.
+>- Upper right: Your environment and history tabs. They tell you all the changes you've made and things you've added to your R session.
+>- Lower right: Your viewer window. This is where R displays your plots, help topics, and other information. (For now, you can ignore it.)
+
+What's with all these windows?
+=============================
+
+>- Let's focus the left two windows.
+>- Think of the upper one as where you type out and develop your code.
+>- Think of the lower window as where you put your code into action.
+>- Really though, you can type in either and execute from either.
+
+Let's try typing a command.
+=============================
+>- Type the following into your console (that's the lower left one!)
+
+```{r}
+print("hello world")
+```
+>- what happened?
+>- You told R to print some words to your screen, and it did!
+
+Sometimes R makes assumptions for you.
+======================================
+>- You don't actually need to use the "print" function to do this.
+>- Type the following into your console
+
+```{r}
+"hello world, my name is T.R."
+```
+
+Now let's run the same command from your source window.
+======================
+>- What if you run a piece of code, but then want to run it again exactly as before?
+>- Click on your console so the cursor is flashing.
+>- Press the "up" arrow key to show your previous command.
+>- Press it again to see the command from before that.
+>- Now highlight the command. Copy it and paste it into your source window (top left).
+>- Highlight the other command and do the same with it.
+
+Now let's run the same command from your source window.
+======================
+>- The command is now in your source window so you can easily find it later.
+>- Now you can now copy it and paste it into the command line any time you feel like.
+>- Or even better, you can just put your cursor on the line you want to run and click the "Run" button (top right side of the source window.)
+>- Or better still, press Command+Enter (on mac) or CTRL+Enter (on PC).
+>- Remember that trick; it will you save you a lot of time.
+
+Using R
+========================================================
+What is R?
+>- R is a analysis platform that combines elements of **object**-based
+programming and **functional** programming.
+>- If you want to know what that means, ask Adam after the workshop!
+>- For now, know that R is great for organizing and analyzing data.
+
+Let's do some MATH.
+=================================
+>- Type some calculations into your console as though it were a calculator. Press Enter.
+>- Examples:
+```{r}
+5+5+5+5+5
+5*5
+5^2
+```
+
+Let's do some MATH.
+=================================
+>- Examples cont'
+```{r}
+sqrt(25)
+(3.1 + 219) * (100 / 12)
+```
+
+Let's do some MATH.
+=================================
+>- Examples cont'
+```{r}
+sqrt(3^2 + 4^2)
+```
+>- This code finds the length of the hypotenuse of a right triangle.
+>- I can change numbers **3** and **4** to correspond to the lengths of the two shorter sides of the triangle.
+
+Puzzle!! Find the sum of these numbers.
+=================================
+62   39   44   17   90   25   88   39
+
+Puzzle!! Find the sum of these numbers.
+=================================
+This way works:
+```{r}
+62+39+44+17+90+25+88+39
+```
+
+
+Puzzle!! Find the sum of these numbers.
+=================================
+This way works:
+```{r}
+62+39+44+17+90+25+88+39
+```
+And so does this way:
+```{r}
+sum(62, 39, 44, 17, 90, 25, 88, 39)
+```
+
+
+Let's make an OBJECT.
+========================================================
+>- Type the following code into your source window, then hit Control/Command + Enter
+```{r}
+my_age <- 33.5
+```
+>- The above command creates a new **object** called "my_age". It has a value of 33.5
+
+Let's make an OBJECT.
+========================================================
+>- Note the arrow pointing from 33.5 to "my_age".
+>- The value 33.5 is "put into" an object called "my_age".
+```{r}
+my_age
+```
+
+What are objects?
+========================================================
+>- An object can be thought of as **something that gets acted upon**.
+>- The number 33.5 can be divided, added to, printed or otherwise acted upon.
+>- An object with a value of 33.5 like **my_age** can likewise be divided, added to, printed, etc.
+>- How many years do I have to live?
+
+```{r}
+life_exp <- 76
+years_to_live <- life_exp - my_age
+years_to_live
+```
+
+What are objects?
+==========
+Let's make an object from the numbers we used earlier, and pretend they represent the ages of people in this workshop.
+62 39 44 7 90 15 88
+```{r}
+ages <- c(62, 39, 44, 17, 90, 25, 88, 39)
+```
+
+What are objects?
+================================================================
+This object is different from **my_age** in that it has an array of values. (Instead of just one value.)
+```{r}
+ages
+```
+>- Although it contains many values, we do not call **ages** a "list" or "string" of numbers, since those words have a different meaning in R.
+>- Rather, we call it a **vector** of numbers.
+
+What are objects?
+================================================================
+Hot tip: I can look at a single value in a vector by using brackets.
+```{r}
+ages[3]
+```
+Shows me the third value in my vector **ages**.
+
+What are objects?
+================================================================
+That's enough about objects for the moment. Now let's use some functions.
+
+Let's use some functions.
+=======================
+What is the total of all the values in my vector?
+```{r}
+sum(ages)
+```
+>- **sum()** is a **function**.
+
+Let's use some functions.
+=======================
+Here's another
+```{r}
+length(ages)
+```
+>- This function tells me how many values are in my vector.
+
+Puzzle: Can you find the MEAN of the vector "ages"?
+==============================================================
+
+Puzzle: Can you find the MEAN of the vector "ages"?
+==============================================================
+>- Hint: look at the last two functions we ran.
+
+Puzzle: Can you find the MEAN of the vector "ages"?
+==============================================================
+>- Hint: look at the last two functions you ran.
+>- Big hint:
+```{r, results="hide"}
+sum(ages)
+length(ages)
+```
+
+Puzzle: Can you find the MEAN of the vector "ages"?
+==============================================================
+>- Biggest hint (the answer, actually):
+```{r, results="hide"}
+sum(ages) / length(ages)
+```
+
+Let's use a nested function.
+=======================
+Functions in R can be **nested**. This means functions can happen inside of other functions.
+```{r, results="hide"}
+sum(length(ages))
+sum(length(ages), sum(ages))
+length(sum(ages))
+```
+What do you think will happen when we run each of these lines?
+
+Let's use a nested function.
+=======================
+You can nest as many functions together as you like.
+```{r}
+abs(length(sqrt(sum(ages))))
+```
+
+But...
+==================================================
+surely someone, somewhere has created a function to find the average of a vector of numbers. What could it be?
+```{r}
+?average
+```
+```{r}
+?mean
+```
+
+A word about ARGUMENTS.
+========================================================
+```{r}
+mean(ages)
+```
+- Functions often need things called **arguments**.
+- Arguments are specifications you give the function to make it work exactly
+the way you want it to.
+- They always go inside the parentheses that follow any function.
+
+A word about ARGUMENTS.
+========================================================
+```{r}
+mean(ages)
+```
+In the above example, the mean function took just one argument, "ages", which instructed R which object to apply the mean function to.
+
+A word about ARGUMENTS.
+========================================================
+```{r}
+mean(c(1,2,3,4))
+```
+In fact, I can put any argument I like into a function...
+even another function!
+
+A word about ARGUMENTS.
+========================================================
+```{r}
+mean("lemon")
+```
+
+However, not just any argument will work.
+
+Non-rhetorical question.
+=======================================================
+Easy version: What happens if do this?
+```{r, results="hide"}
+my_age - 2
+```
+Hard version: What happens if do THIS? Take some guesses before you run the code.
+```{r, results="hide"}
+ages - 2
+```
+
+Non-rhetorical question.
+=======================================================
+The problem is that the two vectors have different lengths. See for yourself!
+```{r}
+length(ages)==length(2)
+```
+
+
+
+Non-rhetorical question.
+=======================================================
+```{r, results="hide"}
+ages - 2
+```
+Possibilities:
+>- Subtract 2 from the first value in the vector?
+>- Subtract 2 from each value in the vector?
+>- Remove the first two values in the ages vector?
+>- Error: Vectors have different lengths (8, 1)?
+
+Non-rhetorical question.
+=======================================================
+```{r, results="hide"}
+ages - 2
+```
+>- R assumes you want to subtract two from **every value** in the vector, so this is what it does.
+
+
+Quick Tangent: Why R?
+===================================================================
+Many other languages **do not** assume such, and might return an
+error saying your vector lengths do not match, or might only apply
+the operation to the first value in the longer vector, for example.
+
+To subtract the mean from the vector in those languages, you would need to write a **loop**.
+
+While R can be used to write loops, there are often more efficient solutions. This is just one way in which R is particularly well suited to data analysis. 
+
+Let's try a longer vector.
+=======================================================
+Generate a vector of random numbers.
+```{r}
+?rnorm
+?runif
+```
+rnorm() and runif() are two different functions that will generate random numbers. Run the above code and R will tell you that rnorm() will generate random numbers that are normally distributed while runif() will generate random numbers that are uniformly distributed.
+
+Let's try a longer vector.
+=======================================================
+Generate a vector of 50 random numbers, normally distributed.
+```{r, results="hide"}
+rnorm(50)
+```
+
+Let's try a longer vector.
+=======================================================
+Generate a vector of 50 random numbers, normally distributed.
+```{r}
+v1 <- rnorm(50)
+```
+But don't forget to save it into an object!
+
+Let's try a longer vector.
+=======================================================
+Generate a vector of 50 random numbers, normally distributed.
+```{r}
+v1 <- rnorm(50)
+```
+The rnorm() function uses a default mean of 0 and SD of 1 for
+the distribution from which it samples.
+```{r}
+mean(v1)
+```
+
+Let's try a longer vector.
+=======================================================
+Generate a vector of 50 random numbers, normally distributed.
+```{r}
+v1 <- rnorm(50)
+```
+The rnorm() function also lets me specify the mean and SD
+of the distriubtion from which it draws numbers. Just add
+those arguments after the "50".
+```{r}
+v1 <- rnorm(50, mean = 5, sd = 2)
+```
+
+
+Hot tip!
+========================
+You can see what arguments a function needs by using a question mark.
+```{r, results="hide"}
+?rnorm
+```
+You can also get help from google ("rnorm function in r", or similar).
+
+Let's try a longer vector.
+=======================================================
+Quick recap:
+```{r}
+v1 <- rnorm(50, mean = 5, sd = 2)
+```
+- "**v1**" is what you've chosen your object, a vector of 50 numbers, to be called.
+- "**<-**" is an arrow. It means, "put this information here."
+- "**rnorm**" is a function that randomly samples numbers from a normal distribution.
+- "**50**" is how many numbers to select.
+- "**5**" is the mean of the population from which you're selecting.
+- "**2**" is the standard deviation of that population.
+
+Puzzle: Can you center the mean?
+=======================================================
+Suppose I want to center the mean of my vector at zero.
+How would I do this?
+
+Puzzle: Can you center the mean?
+=======================================================
+What is the differece between:
+```{r}
+v1_centered <- v1-mean(v1)
+```
+and:
+```{r}
+v1_centered <- v1-5
+```
+Which of these is less wrong?
+
+Puzzle: Can you center the mean?
+=======================================================
+Let's investigate
+```{r}
+v1_centered <- v1-mean(v1)
+mean(v1_centered)
+```
+Note: The above output is displayed in scientific notation.
+```{r}
+v1_centered <- v1-5
+mean(v1_centered)
+```
+Which of these is less wrong?
+
+Puzzle: Can you find the standard deviation?
+=======================================================
+
+Puzzle: Can you find the standard deviation?
+=======================================================
+- We found the mean of our vector "**v1**" by using the
+**mean()** function. What is the standard deviation of "**v1**"?
+- R has its own SD function, but for now let's do it the hard way.
+
+Puzzle: Can you find the standard deviation?
+=======================================================
+Need help?
+>- calculate the mean using **mean()**
+>- use mathematical operators such as "**/**" for divide, "**^**" for square, etc.
+>- use "**sqrt()**" to calculate square root.
+>- You might also find "**length()**" and "**sum()**" handy.
+
+Puzzle: Can you find the standard deviation?
+=======================================================
+Stuck? Try breaking this up into steps:
+- Find the mean of the vector.
+- Subtract the mean from each value in the vector.
+- Square all of the resulting differences.
+- Sum those resulting squares.
+- Divide that by the length of your vector (minus one).
+- Take the square root of the resulting quotient.
+
+How did you do?
+=======================================================
+Effective...
+```{r}
+diffs <- v1-mean(v1)
+sqs   <- diffs^2
+ss    <- sum(sqs)
+var   <- ss/49
+st_d  <- sqrt(var)
+```
+
+
+How did you do?
+=======================================================
+Effective AND Flexible:
+```{r}
+diffs <- v1-mean(v1)
+sqs   <- diffs^2
+ss    <- sum(sqs)
+var   <- ss/(length(v1)-1)
+st_d  <- sqrt(var)
+```
+
+How did you do?
+=======================================================
+Effective, Flexible, and Compact:
+```{r}
+st_d    <- sqrt(sum((v1-mean(v1))^2)/(length(v1)-1))
+```
+...but a little harder to unpack later.
+
+
+Let's compare our sd to R's sd.
+========================================================
+```{r}
+sqrt(sum((v1-mean(v1))^2)/(length(v1)-1))
+sd(v1)
+```
+
+Part II: Custom Functions
+=======================================================
+So far, R has had a function for everything we've wanted to do. What happens when it doesn't?
+
+The function function.
+=======================================================
+So far, R has had a function for everything we've wanted to do. What happens when it doesn't?
+- There's a function for that!
+- Guess what it's called??
+
+Let's make our first custom function.
+=======================================================
+Suppose I want to make everything awesome. That is, I want to take R
+objects and make R say that that object is awesome. For example,
+```{r}
+fav_fruit <- c("red grape")
+c(fav_fruit, "is awesome.")
+```
+But I don't want to have to type "is awesome" every time.
+It's unlikely that R has included that as a default function, so we
+have to make that function ourselves if we want to use it.
+
+Let's make our first custom function.
+=======================================================
+Let's take our example of what we want to do and use that as a template for our function.
+```{r}
+c(fav_fruit, "is awesome.")
+```
+Now let's put that into the "function" function.
+```{r}
+awsmr <- function(x) {
+  c(x, "is awesome")
+}
+```
+
+Let's make our first custom function.
+=======================================================
+```{r}
+c(fav_fruit, "is awesome.")
+```
+```{r}
+awsmr <- function(x) {
+  c(x, "is awesome")
+}
+```
+See what we did? We took out "**fav_fruit**" and replaced it with a generic "**x**". Now we can replace x with anything we want!
+```{r}
+awsmr("This workshop")
+```
+
+Let's make our first custom function.
+=======================================================
+We can store the results of this function into a new object.
+```{r}
+temp <- awsmr("This workshop")
+temp
+```
+And round and round we go...
+```{r, results="hide"}
+temp <- awsmr(temp)
+temp
+temp <- awsmr(temp)
+temp
+```
+
+Lightning Round!!
+========================================================
+Write your very own function for finding the **mean** of a one-dimensional vector.
+>- Note: Don't call your function "mean"; that name is already taken by R's own mean function.
+>- Try something else (like Harold, maybe?)
+
+Lightning Round!!
+========================================================
+Hint!
+```{r}
+harold <- function(x){
+  # Here is where you do something to x.
+}
+```
+
+
+Lightning Round!!
+========================================================
+Big hint! (The answer, actually.)
+```{r}
+harold <- function(x){
+  sum(x)/length(x)
+}
+```
+
+Lightning Round!!
+=======================================================
+Hopefully none of you did it like this...
+```{r}
+harold <- function(x){
+  mean(x)
+}
+```
+
+
+Lightning Round!!
+========================================================
+Write your very own function for finding the **mean** of a one-dimensional vector.
+
+Bonus Round!!
+========================================================
+Write your very own function for finding the standard deviation of a one-dimensional vector.
+>- Hint: here's our code from earlier. Put this into a function!
+
+```{r}
+diffs <- v1-mean(v1)
+sqs   <- diffs^2
+ss    <- sum(sqs)
+var   <- ss/(length(v1)-1)
+sd    <- sqrt(var)
+```
+
+Bonus Round!!
+========================================================
+How did you do?
+>- Clean version
+```{r}
+susan <- function(x){
+  temp <- x-mean(x)
+  temp <- temp^2
+  temp <- sum(temp)
+  temp <- temp/(length(x)-1)
+  sqrt(temp)
+}
+```
+
+Bonus Round!!
+========================================================
+How did you do?
+>- Fancy version
+```{r}
+st_dev <- function(x){
+  sqrt(sum((x-mean(x))^2)/(length(x)-1))
+}
+```
+
+Let's make a dataframe
+==========================
+>- So far we've only used one-dimensional vectors.
+>- But data usually comes in at least two dimensions.
+>- Traditionally, rows represent participants while columns represent variables or measures.
+>- Many exceptions (such as longitudinal data), but even in those cases a 2-dimensional dataframe can often work.
+
+Let's make a dataframe
+==========================
+>- Let's use our existing object (ages) and add another dimension.
+>- Choose whatever you like. I'm choosing "bowling score".
+>- many ways to do this!
+```{r}
+bowling <- c(112, 223, 98, 171, 121, 73, 250, 169)
+bowling <- runif(length(ages), min = 0, max = 300)
+bowling <- rnorm(8, mean=150, sd = 25)
+```
+>- Note: every time I put a new vector into "bowling", I overwrite the previous values!
+
+Let's make a dataframe
+==========================
+Now I have two vectors of the same length. Check it out!
+```{r}
+length(ages)==length(bowling)
+```
+
+Let's make a dataframe
+==========================
+Since they're the same length, I can combine them!
+>- I can either make two rows and eight columns or two columns and eight rows.
+>- Which should I do?
+```{r}
+# The function "cbind()" will treat each vector as a column
+df1 <- cbind(ages, bowling)
+```
+>- How would you combine them as rows?
+
+Let's make a dataframe
+==========================
+We've done it! We've made a dataframe called "df1".
+- But what does it look like?
+>- 
+```{r, results="hide"}
+# Many ways to check and see! Try some of these...
+print(df1)
+df1
+summary(df1)
+```
+
+Let's make a dataframe
+==========================
+We've done it! We've made a dataframe called "df1".
+- But what does it look like?
+>- Try this handy feature of RStudio:
+>- In your **environment** tab (top right window), look for an item called "df1".
+>- Click on the small grid-looking object to the far right of "df1".
+
+Hot Tip!!
+==========================
+>- Remember how you can look at individual values in a vector using brackets?
+```{r}
+bowling[5]
+```
+>- That works with dataframes too!
+```{r, results="hide"}
+df1[5,2]
+```
+>- Note: you now need **two** numbers to view a value, because your dataframe has two dimensions.
+
+Hot Tip!!
+============================================
+```{r, echo=FALSE}
+df1[5,2]
+```
+>- The value in the fifth row, second column is displayed.
+>- But you can also view an entire row, or an entire column.
+>- Which of these will display an entire row? An entire column?
+```{r}
+df1[2,]
+df1[,2]
+```
+>- Note: the comma is necessary for any two-dimensional array.
+
+Tomorrow
+================
+Bring in your own **data file** to read into R!
+>- SPSS, Excel, txt, csv, will work.
+>- We will explore: data management, plotting, analysis, and more!
+>- Email me if you would like me to send you this presentation.
